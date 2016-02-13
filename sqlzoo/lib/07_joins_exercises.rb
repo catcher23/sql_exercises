@@ -113,7 +113,8 @@ def colleagues_of_garfunkel
   execute(<<-SQL)
   select actors.name from actors join castings on actors.id = castings.actor_id
   join movies on movies.id = castings.movie_id where movies.title in
-  (select movies.title from movies join castings on movies.id = castings.movie_id join actors on actors.id =
-  castings.actor_id where actors.name = 'Art Garfunkel') and actors.name != 'Art Garfunkel'
+  (select movies.title from movies join castings on movies.id = castings.movie_id
+  join actors on actors.id = castings.actor_id where actors.name = 'Art Garfunkel')
+  and actors.name != 'Art Garfunkel'
   SQL
 end
